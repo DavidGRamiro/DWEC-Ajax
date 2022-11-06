@@ -1,0 +1,11 @@
+#resultadoBusqueda {
+    margin :10px;
+    border-width: 2px;
+    border-style: dashed;
+    background-color: aqua;
+}
+
+th{
+    color:rgb(146, 146, 104);
+    border-width:8px
+}
