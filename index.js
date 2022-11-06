@@ -26,20 +26,18 @@ function enviarDatos(){
 function procesarRespuesta(jsonDoc){
 
     let objetoJson = JSON.parse(jsonDoc)
-    var ArrayPizza = objetoJson.PRODUCTOS.PIZZA;
+    let tab = document.getElementById("resultado")
+
+    let ArrayPizza = objetoJson.PRODUCTOS.PIZZA;
 
     //Creación de la tabla a la que metemos los datos
-    let tabla = document.getElementById("resultado")
-    let rows = document.createElement("tr")
-    let head = document.createElement("th")
-    rows.appendChild(head)
-    tabla.appendChild(rows)
+    let tabla = "<tr><th>NOMBRE</th><th>PRECIO</th></tr>"
 
     for (let pizza of ArrayPizza){
-        
-        rows.innerHTML = pizza.NOMBRE
-        console.log(pizza.NOMBRE)
+        tabla += "<tr><td>" + pizza.NOMBRE + "</td>" + 
+        "<td>" + pizza.PRECIO + "</td></tr>"
     }
-    
-        
+
+    tab.innerHTML = tabla
+
 }
