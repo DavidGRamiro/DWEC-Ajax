@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="index.js"></script>
+    <link rel ="stylesheet" href = "style.css">
+    <link rel="icon" type="image/jpg" href ="Pictures/icons8-pizza-16.png"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
+    <title>Pizzelix</title>
+</head>
+<body>
+    <div id ="logo">
+        <img src ="Pictures/d769932308af4d93a009b2e8c79f5d30.png" alt ="logo" class ="pizza">
+    </div>
+    <h1>Ordene su pizzeLix</h1>
+    <div id = "contendor">
+        <div name="pedido" id = "formulario" >
+            <label for="nombre">Nombre</label><br>
+            <input  type="text" id="nombre" name="nombre" placeholder="Juan">         
+            <br><br>
+
+            <label for="apellido">Apellidos</label><br>
+            <input  type="text" id="apellido" name="apellido" placeholder="Palomo" >
+            <br><br>
+
+            <label for ="direccion">Dirección</label>
+            <br>
+            <input type="text" id ="direccion" placeholder ="Calle Edix,48" >
+            <br><br>
+            <label for="email">Correo electrónico</label><br>
+            <input   type="email" id="correo" name="email" placeholder="example@email.com" >
+            <br><br>
+
+            <label for="telefono">Teléfono de contacto</label><br>
+            <input type="tel" id="telefono" name="telefono" placeholder="605798146" >
+            <br><br>
+            <label for="zona">¿ Qué tamaños tenemos disponibles ?</label>
+            <br>
+            <div id = "personalizado">
+                <table id = "tablaDatos">
+
+                    <button id = "dato">Datos</button>  
+                </table>
+
+                <!-- <input type="radio" name="tamaño" value="peque"/> Pequeña<br> 
+                <input type="radio" name="tamaño" value="media"/> Mediana<br>
+                <input type="radio" name="tamaño" value="grande"/> Grande<br><br> -->
+            </div>
+            <h2>Las más famosas</h2>
+            <div id = "masVendidas">
+                <table id = "famosas">
+                    <button id = "fam">FAMOSAS</button>
+                </table>
+            </div>
+            <br>
+            <label>Ingredientes:</label>
+            <br><br>
+            <!-- <input type="checkbox" name= "ingredientes" id="bacon"/> Bacon<br/>
+            <input type="checkbox" name= "ingredientes" id="champiñones"/> Champiñones<br/>
+            <input type="checkbox" name= "ingredientes" id="piña"/> Piña<br/>
+            <input type="checkbox" name= "ingredientes" id="pulledPork"/> Pulled pork<br/> -->
+            <div>
+                <table id = ingredientes>
+                    <button id = "ing">Generar ingredientes</button>
+                </table>
+            </div>
+            <!-- <button type="submit" id="finalizar">Hacer pedido</button> -->
+            </div>
+        </div>
+</body>
+</html>
