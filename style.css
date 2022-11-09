@@ -1,0 +1,50 @@
+ *{
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bolder;
+}
+h1{
+    text-align: center;
+    margin-top: -20px;
+    margin-left: 50px;
+    color:rgb(206, 0, 36)
+}
+#logo{
+    margin-top: -75px;
+    text-align: center;
+}
+.pizza{
+    width: 300px;
+}
+
+#formulario{
+    position: absolute;
+    float: center;
+    left:45%;
+    margin-top: 20px;
+    border-style:double;
+    padding-top: 20px;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    border-color: rgb(251, 209, 88);
+    background-color: rgb(251, 209, 88);
+
+}
+label{
+    color:rgb(34, 191, 136);
+    font-size: 18px;
+    margin: 20px;
+    text-shadow: 2px 1px 0.2px black;
+}
+input{
+    margin-left: 20px;
+}
+#finalizar{
+    margin-left:25%;
+    margin-bottom: 10px;
+    padding:5px;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    background-color:rgb(34, 191, 136);
+} 
