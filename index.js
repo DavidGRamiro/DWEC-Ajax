@@ -249,6 +249,42 @@ function procesarRespuestaIngredientes(jsonDoc){
     }
 }
 
+function actualizar(){
+    const URL_DESTINO = "http://127.0.0.1:5500/"
+    const RECURSO = "productos.json"
+
+    let xmlHttp = new XMLHttpRequest()
+
+    xmlHttp.onreadystatechange = function(){
+        if (this.readyState == 4){
+            console.log("Estado listo = "+this.readyState)
+            if (this.status == 200){
+                console.log("LISTO !! : " +this.status)
+                procesarRespuestaIngredientes(this.responseText)
+            
+            }else{
+                alert("ERRORRRRRR")
+            }
+        }
+    }
+    xmlHttp.open('GET',URL_DESTINO + RECURSO, true)
+    xmlHttp.send(null)
+}
+
+function procesarRespuestaIngredientes(jsonDoc){
+
+    let objetoJson = JSON.parse(jsonDoc)
+    let tab3 = document.getElementById("ingredientes")
+
+    //Creación de la tabla a la que metemos los datos
+    let tabla3 = "<tr><th>Ingredientes</th></tr>"
+    let ArrayPizzaIngredientes = objetoJson.PRODUCTOS.PERSONALIZA.INGREDIENTES;  
+
+    for (let i = 0; i < ArrayPizzaIngredientes.length; i++){
+        tabla3 += "<tr><td>" + ArrayPizzaIngredientes[i] + "</td></tr>"   
+        tab3.innerHTML = tabla3
+    }
+}
 
 window.onload = function(){
     let tamaños = document.getElementById("dato")
