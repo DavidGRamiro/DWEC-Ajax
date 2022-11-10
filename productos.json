@@ -1,0 +1,130 @@
+{
+    "PRODUCTOS":{
+        "PIZZA": [
+            {
+                "NOMBRE": "Carbonara",
+                "DESCRIPCION":" Masa fresca, doble de bacon, salasa carbonara, queso fundido",
+                "PRECIO": 15.95,
+                "GLUTEN": true,
+                "OFERTA": false
+            },
+            {
+                "NOMBRE":"Peperoni",
+                "DESCRIPCION":"Irressistible masa acompañada de doble ración de peperoni y queso fundido",
+                "PRECIO":12,
+                "GLUTEN":true,
+                "OFERTA":false
+            },
+            {
+                "NOMBRE":"4 quesos",
+                "DESCRIPCION":"Masa fresca, mezla de cuatro quesos y tomate",
+                "PRECIO":15,
+                "GLUTEN":true,
+                "OFERTA":false
+            },
+            {
+                "NOMBRE":"Barbacoa",
+                "DESCRIPCION":"Masa fresca, bacon, pollo, queso fundido, salsa barbacoa y soble de carne de vacuno",
+                "PRECIO":20,
+                "GLUTEN":true,
+                "OFERTA":false
+            },
+            {
+                "NOMBRE":"Hawaiana",
+                "DESCRIPCION":"Masa fresca, doble de york, piña, tomate y queso fundido",
+                "PRECIO":15,
+                "GLUTEN":true,
+                "OFERTA":false
+            }
+        ],
+        "GOURMET":[
+            {
+                "NOMBRE":"Bacon Crispy Gourmet",
+                "DESCRIPCION":"Salsa barbacoa, bacon ahumado y mecla de 5 quesos",
+                "PRECIO":22,
+                "GLUTEN":true,
+                "OFERTA":false
+            },
+            {
+                "NOMBRE":"Iberica Gourmet",
+                "DESCRIPCION":"Jamón ibérico, tomate natural y aceite de oliva",
+                "PRECIO":22,
+                "GLUTEN":true,
+                "OFERTA":false
+            },
+            {
+                "NOMBRE":"Carbonara Gourmet",
+                "DESCRIPCION":"Salsa especial carbonara, con los mejores ingredientes y mezcla de 5 quesos",
+                "PRECIO":22,
+                "GLUTEN":true,
+                "OFERTA":false
+            }
+        ],
+        "SIN GLUTEN":[
+            {
+                "NOMBRE":"York sin Gluten",
+                "DESCRIPCION":"Combinación de ingredientes jamón york y bacon, sin gluten",
+                "PRECIO":16,
+                "GLUTEN":false,
+                "OFERTA":false
+            },
+            {
+                "NOMBRE":"Barbacoa",
+                "DESCRIPCION":"Nuestra deliciosa barbacoa ahora también sin gluten",
+                "PRECIO":16,
+                "GLUTEN":false,
+                "OFERTA":false
+            }
+        ],
+        "OFERTAS":[
+            {
+                "NOMBRE":"Spicy Barbacoa",
+                "DESCRIPCION":"Nuestra clásica barbacoa, pero ahora acompañada de una salsa picante",
+                "PRECIO":10,
+                "GLUTEN":true,
+                "OFERTA":true
+            },
+            {
+                "NOMBRE":"Del campo",
+                "DESCRIPCION":"Increible masa crujiente acompañada de los ingredientes más naturales de nuestra huerta",
+                "PRECIO":10,
+                "GLUTEN":true,
+                "OFERTA":true
+            },
+            {
+                "NOMBRE":"Montana Vegui",
+                "DESCRIPCION":"Prueba nuestro ingrediente vegano :'NoPollo', acompañado de queso fundido vegano, cebolla y champión" ,
+                "PRECIO":10,
+                "GLUTEN":true,
+                "OFERTA":true
+            }
+        ],
+        "ENTRANTRES":[
+            {
+                "NOMBRE":"Nuggets",
+                "DESCRIPCION":"6 nuggets de pollo",
+                "PRECIO":5,
+                "GLUTEN":true,
+                "OFERTA":false
+            },
+            {
+                "NOMBRE":"Croquetas",
+                "DESCRIPCION":"Croquetas de jamón y pollo.",
+                "PRECIO":5,
+                "GLUTEN":true,
+                "OFERTA":false
+            },
+            {
+                "NOMBRE":"Aros de cebolla",
+                "DESCRIPCION":"6 crujientes aros de cebolla",
+                "PRECIO":5,
+                "GLUTEN":true,
+                "OFERTA":false
+            }
+        ],
+        "PERSONALIZA":{
+            "TAMAÑOS":["PEQUEÑA","MEDIANA","FAMILIAR"],
+            "INGREDIENTES":["BACON","CHAMPIÑONES","PULLED PORK","PIÑA","JAMÓN YORK"]
+        }
+    }
+}

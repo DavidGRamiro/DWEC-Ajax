@@ -140,8 +140,12 @@
 let isIngredientesLoaded = false
 let isFamosasLoaded = false
 let isDatosLoaded = false
+//TO DO: Revisar porque si declaramos esta variable en window.onload = function(){}
+//no carga nada
+//Boolean para saber si se han cargado ya los tamaños
+let isCreated1 = false
 
-
+/**** CARGAR INFO TAMAÑOS ****/
 function enviarDatosTamaños(){
 
     const URL_DESTINO = "http://127.0.0.1:5500/"
@@ -166,19 +170,43 @@ function enviarDatosTamaños(){
 
 function procesarRespuesta(jsonDoc){
 
+    if(!isCreated1){
+
     let objetoJson = JSON.parse(jsonDoc)
-    let tab = document.getElementById("tablaDatos")
+    let ArrayPizzaTamaños = objetoJson.PRODUCTOS.PERSONALIZA.TAMAÑOS; 
+    
+    var th = document.createElement("p")
+    th.textContent = "TAMAÑOS"
+    datosTamaños.appendChild(th)
+    
+    ArrayPizzaTamaños.forEach((element) => {
+        //Creamos el input
+        var tamañosSelector = document.createElement("input");
+        tamañosSelector.setAttribute("type", "radio");
+        tamañosSelector.setAttribute("name", "radiobutton");
+        tamañosSelector.setAttribute("value", element);
 
-    //Creación de la tabla a la que metemos los datos
-    let tabla = "<tr><th>NOMBRE</th></tr>"
-    let ArrayPizzaTamaños = objetoJson.PRODUCTOS.PERSONALIZA.TAMAÑOS;  
+        datosTamaños.appendChild(tamañosSelector);
 
-    for (let i = 0; i < ArrayPizzaTamaños.length; i++){
-        tabla += "<tr><td>" + ArrayPizzaTamaños[i] + "</td></tr>"   
-        tab.innerHTML = tabla
-    }
+        //Creamos el label
+        var labelTamaños = document.createElement("label");
+        labelTamaños.setAttribute("for", element);
+        labelTamaños.textContent = element;
+
+        datosTamaños.appendChild(labelTamaños);
+    })
+
+    // for (let i = 0; i < ArrayPizzaTamaños.length; i++){
+    //     tabla += "<tr><td>" + ArrayPizzaTamaños[i] + "</td></tr>"   
+    //     tab.innerHTML = tabla
+    // }
+    isCreated1 = true
+    } 
+
     isDatosLoaded = true
 }
+
+
 
 function enviarDatosFamosas(){
 
@@ -275,4 +303,8 @@ window.onload = function(){
     famosas.addEventListener("click",enviarDatosFamosas)
     ingredientes.addEventListener("click",enviarDatosIngredientes)
     refrescar.addEventListener("click",refrescarDatos)
+
+    let divTamaños = document.getElementById("divTamaños")
+    let datosTamaños = document.getElementById("datosTamaños")
+    
 }
