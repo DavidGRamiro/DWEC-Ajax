@@ -140,10 +140,6 @@
 let isIngredientesLoaded = false
 let isFamosasLoaded = false
 let isDatosLoaded = false
-//TO DO: Revisar porque si declaramos esta variable en window.onload = function(){}
-//no carga nada
-//Boolean para saber si se han cargado ya los tamaños
-let isCreated1 = false
 
 /**** CARGAR INFO TAMAÑOS ****/
 function enviarDatosTamaños(){
@@ -168,14 +164,20 @@ function enviarDatosTamaños(){
     xmlHttp.send(null)
 }
 
+/**
+ * Procesa los datos recuperados de productos.json
+ * @param {*} jsonDoc 
+ */
 function procesarRespuesta(jsonDoc){
 
-    if(!isCreated1){
+    if(isDatosLoaded){
+        datosTamaños.innerHTML = ''
+    }
 
     let objetoJson = JSON.parse(jsonDoc)
     let ArrayPizzaTamaños = objetoJson.PRODUCTOS.PERSONALIZA.TAMAÑOS; 
     
-    var th = document.createElement("p")
+    let th = document.createElement("p")
     th.textContent = "TAMAÑOS"
     datosTamaños.appendChild(th)
     
@@ -196,14 +198,8 @@ function procesarRespuesta(jsonDoc){
         datosTamaños.appendChild(labelTamaños);
     })
 
-    // for (let i = 0; i < ArrayPizzaTamaños.length; i++){
-    //     tabla += "<tr><td>" + ArrayPizzaTamaños[i] + "</td></tr>"   
-    //     tab.innerHTML = tabla
-    // }
-    isCreated1 = true
-    } 
-
     isDatosLoaded = true
+  
 }
 
 
@@ -287,13 +283,18 @@ function procesarRespuestaIngredientes(jsonDoc){
     isIngredientesLoaded = true
 }
 
+/** 
+ * Refresca los datos del json de las secciones ya cargadas
+ */
 function refrescarDatos(){ 
     if (isDatosLoaded) enviarDatosTamaños()
     if (isFamosasLoaded) enviarDatosFamosas()
     if (isIngredientesLoaded) enviarDatosIngredientes()
-    
 }
 
+/**
+ * Variables que declaramos al cargar la página
+ */
 window.onload = function(){
     let tamaños = document.getElementById("dato")
     let famosas = document.getElementById("fam")
