@@ -137,6 +137,11 @@
 //     validaPizza.addEventListener("click", validacion)
 // }
 
+let isIngredientesLoaded = false
+let isFamosasLoaded = false
+let isDatosLoaded = false
+
+/**** CARGAR INFO TAMAÑOS ****/
 function enviarDatosTamaños(){
 
     const URL_DESTINO = "http://127.0.0.1:5500/"
@@ -159,20 +164,45 @@ function enviarDatosTamaños(){
     xmlHttp.send(null)
 }
 
+/**
+ * Procesa los datos recuperados de productos.json
+ * @param {*} jsonDoc 
+ */
 function procesarRespuesta(jsonDoc){
 
-    let objetoJson = JSON.parse(jsonDoc)
-    let tab = document.getElementById("tablaDatos")
-
-    //Creación de la tabla a la que metemos los datos
-    let tabla = "<tr><th>NOMBRE</th></tr>"
-    let ArrayPizzaTamaños = objetoJson.PRODUCTOS.PERSONALIZA.TAMAÑOS;  
-
-    for (let i = 0; i < ArrayPizzaTamaños.length; i++){
-        tabla += "<tr><td>" + ArrayPizzaTamaños[i] + "</td></tr>"   
-        tab.innerHTML = tabla
+    if(isDatosLoaded){
+        datosTamaños.innerHTML = ''
     }
+
+    let objetoJson = JSON.parse(jsonDoc)
+    let ArrayPizzaTamaños = objetoJson.PRODUCTOS.PERSONALIZA.TAMAÑOS; 
+    
+    let th = document.createElement("p")
+    th.textContent = "TAMAÑOS"
+    datosTamaños.appendChild(th)
+    
+    ArrayPizzaTamaños.forEach((element) => {
+        //Creamos el input
+        var tamañosSelector = document.createElement("input");
+        tamañosSelector.setAttribute("type", "radio");
+        tamañosSelector.setAttribute("name", "radiobutton");
+        tamañosSelector.setAttribute("value", element);
+
+        datosTamaños.appendChild(tamañosSelector);
+
+        //Creamos el label
+        var labelTamaños = document.createElement("label");
+        labelTamaños.setAttribute("for", element);
+        labelTamaños.textContent = element;
+
+        datosTamaños.appendChild(labelTamaños);
+    })
+
+    isDatosLoaded = true
+  
 }
+
+
 
 function enviarDatosFamosas(){
 
@@ -210,6 +240,8 @@ function procesarRespuestaFamosas(jsonDoc){
         tabla2 += "<tr><td>" + ArrayPizzaFamosas[i].NOMBRE + "</td></tr>" 
         tab2.innerHTML = tabla2
     } 
+
+    isFamosasLoaded = true
     
 }
 function enviarDatosIngredientes(){
@@ -247,50 +279,33 @@ function procesarRespuestaIngredientes(jsonDoc){
         tabla3 += "<tr><td>" + ArrayPizzaIngredientes[i] + "</td></tr>"   
         tab3.innerHTML = tabla3
     }
+
+    isIngredientesLoaded = true
 }
 
-function actualizar(){
-    const URL_DESTINO = "http://127.0.0.1:5500/"
-    const RECURSO = "productos.json"
-
-    let xmlHttp = new XMLHttpRequest()
-
-    xmlHttp.onreadystatechange = function(){
-        if (this.readyState == 4){
-            console.log("Estado listo = "+this.readyState)
-            if (this.status == 200){
-                console.log("LISTO !! : " +this.status)
-                procesarRespuestaIngredientes(this.responseText)
-            
-            }else{
-                alert("ERRORRRRRR")
-            }
-        }
-    }
-    xmlHttp.open('GET',URL_DESTINO + RECURSO, true)
-    xmlHttp.send(null)
+/** 
+ * Refresca los datos del json de las secciones ya cargadas
+ */
+function refrescarDatos(){ 
+    if (isDatosLoaded) enviarDatosTamaños()
+    if (isFamosasLoaded) enviarDatosFamosas()
+    if (isIngredientesLoaded) enviarDatosIngredientes()
 }
 
-function procesarRespuestaIngredientes(jsonDoc){
-
-    let objetoJson = JSON.parse(jsonDoc)
-    let tab3 = document.getElementById("ingredientes")
-
-    //Creación de la tabla a la que metemos los datos
-    let tabla3 = "<tr><th>Ingredientes</th></tr>"
-    let ArrayPizzaIngredientes = objetoJson.PRODUCTOS.PERSONALIZA.INGREDIENTES;  
-
-    for (let i = 0; i < ArrayPizzaIngredientes.length; i++){
-        tabla3 += "<tr><td>" + ArrayPizzaIngredientes[i] + "</td></tr>"   
-        tab3.innerHTML = tabla3
-    }
-}
-
+/**
+ * Variables que declaramos al cargar la página
+ */
 window.onload = function(){
     let tamaños = document.getElementById("dato")
     let famosas = document.getElementById("fam")
     let ingredientes = document.getElementById("ing")
+    let refrescar = document.getElementById("btnRefrescar")
     tamaños.addEventListener("click",enviarDatosTamaños)
     famosas.addEventListener("click",enviarDatosFamosas)
     ingredientes.addEventListener("click",enviarDatosIngredientes)
+    refrescar.addEventListener("click",refrescarDatos)
+
+    let divTamaños = document.getElementById("divTamaños")
+    let datosTamaños = document.getElementById("datosTamaños")
+    
 }
