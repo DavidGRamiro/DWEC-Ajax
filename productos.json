@@ -123,7 +123,7 @@
             }
         ],
         "PERSONALIZA":{
-            "TAMAÑOS":["PEQUEÑA","MEDIANA","FAMILIAR2"],
+            "TAMAÑOS":["PEQUEÑA","MEDIANA","FAMILIAR"],
             "INGREDIENTES":["BACON","CHAMPIÑONES","PULLED PORK","PIÑA","JAMÓN YORK"]
         }
     }
