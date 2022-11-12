@@ -167,12 +167,14 @@ function procesarRespuesta(jsonDoc){
     let ArrayPizzaTamaños = objetoJson.PRODUCTOS.PERSONALIZA.TAMAÑOS; 
     
     let th = document.createElement("p")
+
     datosTamaños.appendChild(th)
     
     ArrayPizzaTamaños.forEach((element) => {
         //Creamos el input
         var tamañosSelector = document.createElement("input");
         tamañosSelector.setAttribute("type", "radio");
+
         tamañosSelector.setAttribute("name", "tamaño");
         tamañosSelector.setAttribute("value", element);
 
@@ -187,7 +189,10 @@ function procesarRespuesta(jsonDoc){
     })
 
     isDatosLoaded = true
+
 }
+
+
 
 function enviarDatosFamosas(){
 
@@ -221,7 +226,7 @@ function procesarRespuestaFamosas(jsonDoc){
     //Creamos la linea de los radio button
     let th = document.createElement("p")
     datosFamosas.appendChild(th)
-
+    
     let objetoJson = JSON.parse(jsonDoc)
     let ArrayPizzasFamosas = objetoJson.PRODUCTOS.GOURMET
 
@@ -245,6 +250,8 @@ function procesarRespuestaFamosas(jsonDoc){
         datosFamosas.appendChild(labelFamosas)
     })
     isFamosasLoaded = true
+ 
+    } 
 }
 
 
@@ -319,11 +326,14 @@ window.onload = function(){
     let tamaños = document.getElementById("dato")
     let famosas = document.getElementById("fam")
     let ingredientes = document.getElementById("ing")
+
     let refrescar = document.getElementById("refrescar")
+    
     tamaños.addEventListener("click",enviarDatosTamaños)
     famosas.addEventListener("click",enviarDatosFamosas)
     ingredientes.addEventListener("click",enviarDatosIngredientes)
     refrescar.addEventListener("click",refrescarDatos)
+
 
     let datosTamaños = document.getElementById("datosTamaños")
     let datosFamosas = document.getElementById("datosFamosas")
@@ -333,3 +343,4 @@ window.onload = function(){
     validaPizza.addEventListener("click", validacion)
     
 }
+
