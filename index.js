@@ -249,10 +249,9 @@ function procesarRespuestaFamosas(jsonDoc){
 
         datosFamosas.appendChild(labelFamosas)
     })
-    isFamosasLoaded = true
- 
+        isFamosasLoaded = true
+
     } 
-}
 
 
 function enviarDatosIngredientes(){
