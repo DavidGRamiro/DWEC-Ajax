@@ -36,6 +36,17 @@ function validacion(){
         alert("Debe escoger algun tamaño")
         return false;
     }
+    let modelo= document.getElementsByName("populares");
+    let aceptado=false;
+    for(let x=0: x<modelo.length;x++)
+        if(modelo[x].checked){
+            aceptado=true;
+            break;
+        }
+    if(!aceptado){
+        alert("debe escoger una pizza de la carta")
+        return false;
+    }
     /**
      * Recuperamos los elementos del checkbox en un Array. Accedemos a el a través de la etiqueta nombre.
      * La variable por defecto es false.
@@ -120,7 +131,7 @@ function totalIngredientes(){
  */
 function precioTotal(){
     
-    return alert("El precio es  " + `${totalTamaños() + totalIngredientes()}` + " Euros")
+    return alert("El precio es  " + `${precioFamosas() /*+ totalIngredientes()*/}` + " Euros")
 }    
 
 
@@ -165,7 +176,7 @@ function procesarRespuesta(jsonDoc){
 
     let objetoJson = JSON.parse(jsonDoc)
     let ArrayPizzaTamaños = objetoJson.PRODUCTOS.PERSONALIZA.TAMAÑOS; 
-    
+    console.log(ArrayPizzaTamaños)
     let th = document.createElement("p")
 
     datosTamaños.appendChild(th)
@@ -207,7 +218,7 @@ function enviarDatosFamosas(){
             if (this.status == 200){
                 console.log("LISTO !! : " +this.status)
                 procesarRespuestaFamosas(this.responseText)
-            
+                precioFamosas(this.response )
             }else{
                 alert("ERRORRRRRR")
             }
@@ -229,17 +240,18 @@ function procesarRespuestaFamosas(jsonDoc){
     
     let objetoJson = JSON.parse(jsonDoc)
     let ArrayPizzasFamosas = objetoJson.PRODUCTOS.GOURMET
-
+    
     ArrayPizzasFamosas.forEach((famosa) =>{
         
         //Accedemos al atributo NOMBRE
         var nombre = famosa.NOMBRE 
+        var precio= famosa.PRECIO
         //Creamoos el input
         var famosasSelector = document.createElement("input")
         famosasSelector.setAttribute("type", "radio")
         famosasSelector.setAttribute("name", "populares")
         famosasSelector.setAttribute("value", nombre)
-
+        famosasSelector.setAttribute("value", precio)
         datosFamosas.appendChild(famosasSelector)
 
         //Creamos el label
@@ -248,10 +260,67 @@ function procesarRespuestaFamosas(jsonDoc){
         labelFamosas.textContent = nombre
 
         datosFamosas.appendChild(labelFamosas)
+        
     })
-        isFamosasLoaded = true
+    isFamosasLoaded=true
 
-    } 
+
+    }
+    
+ /* function enviarDatosPrecioFamosas(){
+
+        const URL_DESTINO = "http://127.0.0.1:5500/"
+        const RECURSO = "productos.json"
+    
+        let xmlHttp = new XMLHttpRequest()
+    
+        xmlHttp.onreadystatechange = function(){
+            if (this.readyState == 4){
+                console.log("Estado listo = "+this.readyState)
+                if (this.status == 200){
+                    console.log("LISTO !! : " +this.status)
+                    
+                    precioFamosas(this.status)
+                }else{
+                    alert("ERRORRRRRR")
+                }
+            }
+        }
+        xmlHttp.open('GET',URL_DESTINO + RECURSO, true)
+        xmlHttp.send(null)
+    }*/
+   function precioFamosas(jsonDoc){
+    let objetoJson=JSON.stringify(jsonDoc);
+    let ArrayPizzasFamosas=objetoJson.PRODUCTOS//.GOURMET;  
+    console.log(ArrayPizzasFamosas)  
+    let y=0
+    //let pizzaPrecio= document.getElementsByName("populares")
+    ArrayPizzasFamosas.forEach((pizza) =>{
+        if(pizza.NOMBRE.checked){
+            y=pizza.PRECIO;
+            console.log(pizza.PRECIO)
+        }
+
+    })
+        let euros=parseInt(y)
+        return euros
+    }
+
+
+
+       /* let famosas= document.getElementsByName("populares").precio
+        let y=0
+        for(let x=0; x<famosas.length;){
+            if(famosas[x].checked){
+                y=famosas.precio
+            }
+
+        }
+            
+        let euros = parseInt(y)
+        return euros
+        */
+    
 
 
 function enviarDatosIngredientes(){
