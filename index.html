@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="index.js"></script>
     <link rel ="stylesheet" href = "style.css">
     <link rel="icon" type="image/jpg" href ="Pictures/icons8-pizza-16.png"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
+    <script type = "application/javascript"src = "index.js"></script>
     <title>Pizzelix</title>
 </head>
 <body>
@@ -38,39 +38,36 @@
             <label for="telefono">Teléfono de contacto</label><br>
             <input type="tel" id="telefono" name="telefono" placeholder="605798146" >
             <br><br>
-            <label for="zona">¿ Qué tamaños tenemos disponibles ?</label>
+            <label for="zona" id = "genera">¿ Qué tamaños tenemos disponibles ?</label>
             <br>
+
+            <!--Traemos los datos de los tamaños de las pizzas disponibles-->
             <div id = "personalizado">
-                <table id = "tablaDatos">
-
-                    <button id = "dato">Datos</button>  
-                </table>
-
-                <!-- <input type="radio" name="tamaño" value="peque"/> Pequeña<br> 
-                <input type="radio" name="tamaño" value="media"/> Mediana<br>
-                <input type="radio" name="tamaño" value="grande"/> Grande<br><br> -->
+                <div id = "divTamaños">
+                    <button id = "dato">Tipos</button>
+                    <div id="datosTamaños"></div>
+                </div>
             </div>
-            <h2>Las más famosas</h2>
+
+            <!-- Traemos los datos de nuestras pizzas más famosas-->
+            <label for = "top" id = "genera">¿Cúales son las mas vendidas?</label>
             <div id = "masVendidas">
-                <table id = "famosas">
-                    <button id = "fam">FAMOSAS</button>
-                </table>
+                <div id = "famosas">
+                    <button id = "fam">Pídeme!</button>
+                    <div id = "datosFamosas"></div>
+                </div>
             </div>
+            <!-- Traemos los datos de los ingredientes disponibles-->
+            <label for = "toppings" id ="genera">¿Quieres más ingredientes?</label>
             <br>
-            <label>Ingredientes:</label>
-            <br><br>
-            <!-- <input type="checkbox" name= "ingredientes" id="bacon"/> Bacon<br/>
-            <input type="checkbox" name= "ingredientes" id="champiñones"/> Champiñones<br/>
-            <input type="checkbox" name= "ingredientes" id="piña"/> Piña<br/>
-            <input type="checkbox" name= "ingredientes" id="pulledPork"/> Pulled pork<br/> -->
-            <div>
-                <table id = ingredientes>
-                    <button id = "ing">Generar ingredientes</button>
-                </table>
+            <div id = "misIngredientes">
+                    <button id = "ing">Obtener ingredientes</button>
+                    <div id = datosIngredientes></div>
             </div>
             <button id = "refrescar">Actualizar</button>
-            <!-- <button type="submit" id="finalizar">Hacer pedido</button> -->
+            <button type="submit" id="finalizar">Hacer pedido</button>
         </div>
+    
     </div>
 </body>
 </html>
