@@ -1,4 +1,4 @@
-﻿![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.001.jpeg)
+﻿![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.001.jpeg)
 
 **AE-2. AJAX![](Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.002.png)**
 
@@ -8,7 +8,7 @@
 
 Ana Darvoy David González Miguel Antón
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.002.png)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.002.png)
 
 **Visión general**
 
@@ -39,35 +39,35 @@ En esta función, vamos haciendo un control de cada uno de los procesos por lo q
 
 Una vez que el proceso ha finalizado, y la respuesta ha sido validada por el servidor, hacemos una llamada a la función que será encargada de crear los input de tipo radio y añadirle valor y texto.
 
-![](Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.003.png)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.003.png)
 
 ***Función de llamada al servidor***
 
 A continuación se muestra la función que será la encargada de crear los elementos anteriormente mencionados.
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.004.jpeg)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.004.jpeg)
 
 ***Función encargada de crear los elementos y añadirles valor y texto***
 
 Una vez que tenemos los datos de los tamaños cargados, tenemos que hacer la misma operación con los ingredientes.
 
-![](Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.005.png)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.005.png)
 
 ***Función de petición.***
 
 ***Función de procesamiento de datos - Ingredientes.***
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.006.jpeg)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.006.jpeg)
 
 Para finalizar, tenemos un último paso, que es añadir un botón de refrescar. Para ello, lo que hemos implementado ha sido hacer una función que cargue los datos sólo los que han sido modificados. De esta manera, no tenemos que recargar todo el servidor y solo los que han tenido cambios.
 
 Para poder hacer esto, al final de cada función de generación de datos, hemos igualado dicha función a true, para que los cargue en caso de ser necesario.
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.007.png)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.007.png)
 
 Por último, en nuestra app, hemos creado la función de window onload, que a parte de recoger los datos de la actividad 1 para su validación, hemos añadido los de generación de tamaños e ingredientes en el momento en el que pulsemos el botón.
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.008.png)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.008.png)
 
 Requerimiento 2:
 
@@ -75,19 +75,19 @@ En el requerimiento 2 se nos pedía acceder a la base de datos para obtener los 
 
 En primer lugar debíamos obtener los precios tanto del tamaño como de los ingredientes, por lo que a la hora de recibir la respuesta del JSON debíamos añadir el value PRECIO, aunque no apareciese en pantalla.
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.009.jpeg)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.009.jpeg)
 
 El siguiente punto sería detectar cual de las opciones era la seleccionada y sacar el precio para sumarlo.Para ello hemos utilizado la función calcularTotal().
 
 **función calcularTotal()**
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.010.jpeg)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.010.jpeg)
 
 Para cada elemento se recorre el array que obtenemos al buscar mediante el nombre(“tamaño” y “ingredientes”) para obtener cual está chequeada. Después le damos el valor del precio correspondiente a una variable que hemos declarado anteriormente. Ese precio lo obtenemos al poner el .value .En el precioIngredientes sumamos precioIngredientes al precio ya que podemos elegir varios ingredientes y se deben sumar entre ellos. Por último solo nos quedaría sumar  ambos precios y sacar un alert en pantalla con el precio total.
 
 Esta función esta implementada con requerimientos de la primera actividad, por lo que ingredientes y tamaño tienen que estar seleccionados para que funcione.
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.011.png)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.011.png)
 
 **Test:**
 
@@ -95,7 +95,7 @@ Esta función esta implementada con requerimientos de la primera actividad, por 
 
 1. Comprobamos que los tipos se cargan de forma dinámica:
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.012.jpeg)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.012.jpeg)
 
 2. Comprobamos que los Ingredientes se cargan de forma dinámica:
 
@@ -103,7 +103,7 @@ Esta función esta implementada con requerimientos de la primera actividad, por 
 
 3. Comprobamos que el botón Actualizar refresca la info de Tipos e Ingredientes Modificamos el json y hacemos click sobre el botón  “Actualizar”
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.014.jpeg)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.014.jpeg)
 
 **Test requerimiento 2:**
 
@@ -111,15 +111,15 @@ Esta función esta implementada con requerimientos de la primera actividad, por 
 
 Nos devuelve un precio de 7 Euros : 5€ de base tamaño pequeño + 2€ de Pepperoni
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.015.jpeg)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.015.jpeg)
 
 Modificamos el precio de la base pequeña en el json
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.016.jpeg)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.016.jpeg)
 
 y nos devuelve un precio de 8€: 6€ de base tamaño pequeño + 2€ de Pepperoni
 
-![](readme-images\Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.017.jpeg)
+![](readme-images/Aspose.Words.97e9625e-bcf2-4722-91b7-5daa1a244f95.017.jpeg)
 
 **Repositorio GitHub:**
 
