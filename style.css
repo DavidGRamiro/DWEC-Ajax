@@ -4,13 +4,14 @@
 }
 h1{
     text-align: center;
-    margin-top: -20px;
-    margin-left: 50px;
+    margin-top: -150px;
+    margin-bottom: 50px;
     color:rgb(206, 0, 36)
+
 }
 #logo{
     margin-top: -75px;
-    text-align: center;
+    text-align: left;
 }
 .pizza{
     width: 300px;
@@ -20,6 +21,7 @@ h1{
     position: relative;
     max-width: fit-content;
     margin-top: 20px;
+    margin-left: 35%;
     border-style:double;
     padding-top: 20px;
     -webkit-border-radius: 28;
@@ -27,7 +29,9 @@ h1{
     border-radius: 28px;
     border-color: rgb(251, 209, 88);
     background-color: rgb(251, 209, 88);
+    text-align: left;
 }
+
 label{
     color:rgb(34, 191, 136);
     font-size: 18px;
@@ -61,3 +65,5 @@ input > radio{
     border-radius: 28px;
     background-color:rgb(34, 191, 136);
 } 
+
+
