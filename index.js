@@ -25,20 +25,20 @@ function validacion(){
      */
     let radio = document.getElementsByName("tamaño");
     let seleccionado = false;
-    let precioTamaño=0
+    
     for (let a = 0; a<radio.length;a++){
         if(radio[a].checked){
             seleccionado = true;
-            console.log(radio[a].value)
             break;
         }
-        precioTamaño=radio[a].value;
+        
     }
     /*En el caso de que no este seleccionado nos informa mediante un alert por pantalla*/
     if (!seleccionado){
         alert("Debe escoger algun tamaño")
         return false;
     }
+
     /**
      * Recuperamos los elementos del checkbox en un Array. Accedemos a el a través de la etiqueta nombre.
      * La variable por defecto es false.
@@ -46,14 +46,12 @@ function validacion(){
      */
     let checkbox = document.getElementsByName("ingredientes")
     let marcado = false;
-    let precioIngredientes=0;
     for (let b = 0; b<checkbox.length;b++){
         if (checkbox[b].checked){
         marcado = true;
-        console.log(checkbox[b].value)
         break;
         }
-        precioIngredientes=checkbox[b].value;
+    
     }
     /**
      * Si detecta que uno de los checkbox no ha sido marcado, nos informará
@@ -75,10 +73,13 @@ function validacion(){
 console.log("==============PETICIONES =================")
 
 let isIngredientesLoaded = false
-let isFamosasLoaded = false
 let isDatosLoaded = false
 
-/**** CARGAR INFO TAMAÑOS ****/
+/**
+ * Funcion, que se encarga de recuperar los datos de nuestro "servidor", que en este caso es un documento JSON.
+ * Llamamos a la fucion HTTP, y evaluamos sus estados para tener un mejor control del estado en cada momento.
+ * Una vez que la respuesta sea satisfactoria, hacemos una llamada a la funcion procesarRespuesta.
+ */
 function enviarDatosTamaños(){
 
     const URL_DESTINO = "http://127.0.0.1:5500/"
@@ -102,8 +103,9 @@ function enviarDatosTamaños(){
 }
 
 /**
- * Procesa los datos recuperados de productos.json
- * @param {*} jsonDoc 
+ * Una vez que la respuesta ha sido recibida con éxito, nos traemos el texto. Lo parseamos a un objeto JSON, y lo recorremos.
+ * Con un for each, declaramos que para cada tamaño, nos cree un input de tipo radio, asignandole el nombre y el valor,
+ * y ademas nos crea tambien el label. 
  */
 function procesarRespuesta(jsonDoc){
 
@@ -140,7 +142,10 @@ function procesarRespuesta(jsonDoc){
     isDatosLoaded = true
 
 }
-
+/**
+ * Al igual que en la funcion de enviarDatosTamaños, hacemos la peticion a nuestro servidor,
+ * Una vez con la respuesta satisfactoria, llamamos a la función procesarRespuestaIngredientes.
+ */
 function enviarDatosIngredientes(){
 
     const URL_DESTINO = "http://127.0.0.1:5500/"
@@ -163,6 +168,12 @@ function enviarDatosIngredientes(){
     xmlHttp.open('GET',URL_DESTINO + RECURSO, true)
     xmlHttp.send(null)
 }
+
+/**
+ * A traves del texto que nos llega por parámetro lo volvemos a convertir en objetoJson
+ * Recorremos el objeto y creamos los checkbox para cada ingrediente.
+ * Le asignamos el valor y el nombre a cada uno de ellos. 
+ */
 function procesarRespuestaIngredientes(jsonDoc){
 
     if (isIngredientesLoaded){
@@ -202,74 +213,34 @@ function procesarRespuestaIngredientes(jsonDoc){
  */
 function refrescarDatos(){ 
     if (isDatosLoaded) enviarDatosTamaños()
-    if (isFamosasLoaded) enviarDatosFamosas()
     if (isIngredientesLoaded) enviarDatosIngredientes()
 }
-let precioTamañop=0;
-let precioIngredientesp=0
-/*function calcularTotal(){
 
-    const URL_DESTINO = "http://127.0.0.1:5500/"
-    const RECURSO = "productos.json"
-
-    let xmlHttp = new XMLHttpRequest()
-
-    xmlHttp.onreadystatechange = function(){
-        if (this.readyState == 4){
-            console.log("Estado listo = "+this.readyState)
-            if (this.status == 200){
-                console.log("LISTO !! : " +this.status)
-                obtenerPrecio(JSON.parse(this.responseText))
-            }
-        }
-    xmlHttp.open('GET',URL_DESTINO + RECURSO, true)
-    xmlHttp.send(null)
-    }
-    console.log("hola")
-}
-
-function obtenerPrecio(jsonDoc){
-    let precioTamaño = 0;
-    let precioIngredientes = 0;
-    console.log("hola pepe")
-    let tamaño=jsonDoc.PRODUCTOS.PERSONALIZA
-    let ingrediente=jsonDoc.PRODUCTOS.INGREDIENTES
-    for (let i = 0; i < tamaño.length; i++){
-        if (tamaño[i].checked) precioTamaño+= jsonDoc.PRODUCTOS.PERSONALIZA[i].PRECIO
-    }
-    for (let i = 0; i < ingrediente.lenght; i++){
-        if (ingrediente[i].checked) precioIngredientes += jsonDoc.PRODUCTOS.INGREDIENTES[i].PRECIO
-    }
-    
-    
-}*/
-
-
-/*nueva funcion de calcular el total
-*añadimos el value de precio en procesarRespuestaTamaño y procesar respuestaRespuestaIngredientes
+/* Funcion de calcular el total
+* Esta funcion es llamada una vez que en la funcion validacion, ha sido superada con éxito, declara al principio de este código.
 */
 function calcularTotal(){
     // recorremos el array precioT y detectamos el valor del seleccionado
     let precioT = document.getElementsByName("tamaño");
     let precioTamaño=0
     for (let a = 0; a<precioT.length;a++){
-        precioTamaño=precioT[a].value;
+        if(precioT[a].checked){
+            precioTamaño=precioT[a].value;
+        }
     }
-
-    // recorremos el array precioI y detectamos el valor del seleccionado
+    // Recorremos el array precioI y detectamos el valor del seleccionado
     let precioI = document.getElementsByName("ingredientes")
     let precioIngredientes=0;
     for (let b = 0; b<precioI.length;b++){
-        precioIngredientes=precioI[b].value;
+        if(precioI[b].checked){
+            precioIngredientes=(parseInt(precioIngredientes)+parseInt(precioI[b].value));
+        }
     }
-    
-    
-    //sumamos los precios y sacamos el total en pantalla
+    //Sumamos los precios y sacamos el total en pantalla
     let precioTotal= 0;
     precioTotal=(parseInt(precioTamaño) + parseInt(precioIngredientes));
-    return alert("el precio de tu pizza es "+ precioTotal+" euros");
 
-
+        return alert("el precio de tu pizza es "+ precioTotal+" euros");
 }
 /**
  * Variables que declaramos al cargar la página
@@ -277,16 +248,11 @@ function calcularTotal(){
 window.onload = function(){
     let tamaños = document.getElementById("dato")
     let ingredientes = document.getElementById("ing")
-
     let refrescar = document.getElementById("refrescar")
     
     tamaños.addEventListener("click",enviarDatosTamaños)
     ingredientes.addEventListener("click",enviarDatosIngredientes)
     refrescar.addEventListener("click",refrescarDatos)
-
-
-    let datosTamaños = document.getElementById("datosTamaños")
-    let datosIngredientes = document.getElementById("datosIngredientes")
 
     let validaPizza = document.getElementById("finalizar")
     validaPizza.addEventListener("click", validacion)
